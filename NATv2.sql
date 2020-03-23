@@ -18,7 +18,7 @@ CREATE TABLE `Department` (
   `Name` varchar(15) NOT NULL,
   `Floor` varchar(2),
   `Ward` varchar(3) NOT NULL,
-  `Hospital_ID` int( ) NOT NULL UNIQUE,
+  `Hospital_ID` int(10) NOT NULL UNIQUE,
  PRIMARY KEY (Dept_ID),
  FOREIGN KEY (Hospital_ID) REFERENCES Hospital(Hospital_ID))
  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
