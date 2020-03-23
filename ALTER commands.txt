@@ -1,0 +1,10 @@
+ALTER TABLE COMMANDS
+
+Equipment
+
+FOREIGN KEY(`Dept_ID`) REFERENCES `Department`(`Dept_ID`),
+    FOREIGN KEY(`Last_Cleaned`) REFERENCES `Maintenance`(`Cleaning_record`),
+    FOREIGN KEY(`Loaned_to`) REFERENCES `Person`(`Pats_ID`))
+
+//May have to implement FK constraints after structure of DB is up as 
+All it is doing is erroring on create implementation
