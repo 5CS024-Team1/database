@@ -1,0 +1,29 @@
+Performance Notes
+
+Issues[Update Board]~
+Name Conventions; Revised Create Table statements; having duplicate Attribute names for IDs/Name could lead to confusion so I've renamed each set to be relevant to the Table they are in.
+FK; Added Foreign Key Column names in each create table statement for indexing purposes later.
+FK; Each FK column Starts with the Table name it comes from for reading ease.
+
+
+
+--------------------------------------------------------
+- Table Specific Alterations:-
+
+Department
+1.Moved Floor & Ward to Hospital as they should be parented by Hospital not Dept.
+2.Will Join Dept to Hospital via Floor, ward. [Need to check whether joins need to have both columns created in both tables]
+3.Hosp_ID will be FK.
+
+Equipment
+1.Possible composite key with Id & Barcode.
+2.Added Equi_Pers (Equipment|Person) for FK
+3.Added Equi_Dept (Equipment|Department) for FK
+4.Added Equi_Main_Last_Cleaned (Equipment|Maintenance) for FK
+
+IDs
+1.Added User_Pass to table.
+2.Need to research encryption for password storage.
+3.Changed datatype for Patient to int - hoping can implement trigger for Staff only access by adding constraint for datatype
+----------------------------------------------------------
+Security Notes
