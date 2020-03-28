@@ -4,7 +4,7 @@ Issues[Update Board]~
 Name Conventions; Revised Create Table statements; having duplicate Attribute names for IDs/Name could lead to confusion so I've renamed each set to be relevant to the Table they are in.
 FK; Added Foreign Key Column names in each create table statement for indexing purposes later.
 FK; Each FK column Starts with the Table name it comes from for reading ease.
-
+Table view displays; When creating views change appearence of column headings to be user-friendly. i.e. not Eqi_Cat but "Equipment Category".
 
 
 --------------------------------------------------------
@@ -25,5 +25,26 @@ IDs
 1.Added User_Pass to table.
 2.Need to research encryption for password storage.
 3.Changed datatype for Patient to int - hoping can implement trigger for Staff only access by adding constraint for datatype
+
+Maintenance
+1. Added Hosp_ID for FK purposes
+2. Added Equi_Main_Last_Cleaned (Equipment|Maintenance) for FK
+
+Person
+1. Changed names to be table specific
+2. Changed First_Name to Forename for better readability
+3. ID Constraint; Patient OR Staff [Research possiblity]
+4. Research possiblity to add Pats_Hosp_ID constraint checking if inpatient
+
+User
+1. If trigger is successful, may not need User table so no amendments at present
+----------------------------------------------------------
+ALTER/INDEX alterations
+1.Updated names of PK's
+2.IDs & Person - Check can have 2 unique keys instead of PK for this table.
+-----------------------------------------------------------
+CONSTRAINT NAMES
+Dept_Hosp = Department|Hospital
+
 ----------------------------------------------------------
 Security Notes

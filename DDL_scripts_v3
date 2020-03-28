@@ -1,0 +1,64 @@
+CREATE TABLE Department (
+	PK_Dept_ID         NUMBER(3) NOT NULL PRIMARY KEY,
+    Name               VARCHAR2(15 CHAR) NOT NULL,
+    Floor              VARCHAR2(2 CHAR) NOT NULL,
+    Ward               VARCHAR2(3 CHAR) NOT NULL,
+    Hospital_Hosp_ID   NUMBER(10) NOT NULL REFERENCES Hospital(PK_Hosp_ID) 
+);
+
+CREATE TABLE Equipment (
+    PK_ID                 VARCHAR2(15 CHAR) NOT NULL PRIMARY KEY,
+    Barcode               VARCHAR2(12 CHAR) NOT NULL,
+    Name                  VARCHAR2(20 CHAR) NOT NULL,
+    Category              VARCHAR2(25 CHAR) NOT NULL,
+    Latittude             NUMBER(10, 7) NOT NULL,
+    Timestamp             TIMESTAMP NOT NULL,
+    Loaned                DATE,
+    Return_due            DATE,
+    Longitude             NUMBER(10, 7) NOT NULL,
+    Person_Hospital_ID1   VARCHAR2(10 CHAR) NOT NULL REFERENCES Hospital(PK_Hosp_ID),
+    Person_IDs_Patient_ID VARCHAR2(10 CHAR) NOT NULL REFERENCES IDs(PK_Patient_ID),
+    Person_IDs_Staff_ID   VARCHAR2(10 CHAR) NOT NULL REFERENCES IDs(PK_Staff_ID),
+	Department_Dept_ID	  NUMBER(3) NOT NULL REFERENCES Department(PK_Dept_ID) 
+);
+
+CREATE TABLE Hospital (
+    PK_Hosp_ID hosp_id   NUMBER(10) NOT NULL PRIMARY KEY,
+    UN_Hospital_ID 		 VARCHAR2(10 CHAR) NOT NULL UNIQUE KEY,
+    Name      			 VARCHAR2(20 CHAR) NOT NULL,
+    Address   			 VARCHAR2(35 CHAR) NOT NULL,
+	Town			     VARCHAR2(15 CHAR),
+    County    			 VARCHAR2(30 CHAR) NOT NULL
+);
+
+CREATE TABLE IDs (
+    Patient_ID   	 	VARCHAR2(10 CHAR) NOT NULL PRIMARY KEY,
+    Staff_ID     	 	VARCHAR2(10 CHAR) NOT NULL PRIMARY KEY,
+	FK_User_Password	VARCHAR2(10 CHAR) NOT NULL REFERENCES User(PK_Password)
+);
+
+CREATE TABLE Maintenance (
+    Issue#             VARCHAR2(2 CHAR) NOT NULL,
+    Details            VARCHAR2(60 CHAR) NOT NULL,
+    Hospital_Hosp_ID   NUMBER(10) NOT NULL REFERENCES Hospital(PK_Hosp_ID),
+);
+
+
+CREATE TABLE Person (
+	PK_Pats_ID       NUMBER(10) NOT NULL PRIMARY KEY,
+    Surname          VARCHAR2(15 CHAR) NOT NULL,
+    First_Name       VARCHAR2(15 CHAR) NOT NULL,
+    Address          VARCHAR2(25 CHAR) NOT NULL,
+    Town             VARCHAR2(15 CHAR),
+    County           VARCHAR2(30 CHAR) NOT NULL,
+    Hospital_ID      VARCHAR2(10 CHAR) NOT NULL REFERENCES Hospital(PK_Hosp_ID),
+    IDs_Patient_ID   VARCHAR2(10 CHAR) NOT NULL REFERENCES IDs(PK_Patient_ID),
+    IDs_Staff_ID     VARCHAR2(10 CHAR) NOT NULL REFERENCES IDs(PK_Staff_ID)
+);
+
+CREATE TABLE User (
+    Username         	VARCHAR2(15 CHAR) NOT NULL,
+    PK_Password		 	VARCHAR2(15 CHAR) NOT NULL PRIMARY KEY,
+	FK_IDs_Patient_ID	VARCHAR2(10 CHAR) NOT NULL REFERENCES IDs(PK_Patient_ID),
+	FK_IDs_Staff_ID		VARCHAR2(10 CHAR) NOT NULL REFERENCES IDs(PK_Staff_ID)
+);
