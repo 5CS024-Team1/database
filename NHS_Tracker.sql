@@ -56,7 +56,8 @@ CREATE TABLE `Hospital` (
 --
 CREATE TABLE `IDs` (
   `IDs_Patient` int(10) NOT NULL, -- Changed to int so trigger can be implemented for Staff access
-  `IDs_Staff` varchar(10) NOT NULL, 
+  `IDs_Staff` varchar(10) NOT NULL,
+  `IDs_Inpatient` int(10) NOT NULL, -- constraint to check if inpatient? 
   `User_Pass` varchar(20) NOT NULL, -- Research encryption for Password storage
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
@@ -89,8 +90,7 @@ CREATE TABLE `Person` (
   `Pers_County` varchar(30) NOT NULL,
   `IDs_Patient` int(10) NOT NULL, -- Needed for FK
   `IDs_Staff` varchar(10) NOT NULL, -- Needed for FK [Constraint needed Patient or Staff Constraint]
-  `Pats_Hosp_ID` varchar(10) NOT NULL, -- constraint to check if inpatient?
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 -- --------------------------------------------------------
 --
