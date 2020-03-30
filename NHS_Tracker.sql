@@ -48,7 +48,10 @@ CREATE TABLE `Hospital` (
   `Hosp_Town` varchar(15) NULL, -- Not essential as County is more relevant for tracking
   `Hosp_County` varchar(30) NOT NULL,
   `Hosp_Floor` varchar(2) NOT NULL, -- For Joins
-  `Hosp_Ward` varchar(3) NOT NULL, -- For Joins  
+  `Hosp_Ward` varchar(3) NOT NULL,
+  PRIMARY KEY (`Hosp_ID`),
+  KEY `Dept_Hosp` (Hosp_ID),
+  CONSTRAINT `dept_hosp` FOREIGN KEY (`Hosp_ID) REFERENCES `Department` (`Dept_ID) ON UPDATE CASCADE -- For Joins  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 --
@@ -57,15 +60,15 @@ CREATE TABLE `Hospital` (
 CREATE TABLE `IDs` (
   `IDs_Patient` int(10) NOT NULL, -- Changed to int so trigger can be implemented for Staff access
   `IDs_Staff` varchar(10) NOT NULL,
-  `IDs_Inpatient` int(10) NOT NULL, -- constraint to check if inpatient? 
-  `User_Pass` varchar(20) NOT NULL, -- Research encryption for Password storage
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `IDs_Inpatient` int(10) NOT NULL -- constraint to check if inpatient? 
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 --
 -- Table structure for table `User`
 --
 CREATE TABLE `User` (
-  `Username` varchar(15) NOT NULL
+  `Username` varchar(15) NOT NULL,
+  `User_Pass` varchar(20) NOT NULL, -- Research encryption for Password storage
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- --------------------------------------------------------
 --

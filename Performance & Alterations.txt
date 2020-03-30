@@ -8,6 +8,18 @@ Table view displays; When creating views change appearence of column headings to
 
 
 --------------------------------------------------------
+Create Table with Constraint example:-
+CREATE TABLE `department` (
+ `Dept_ID` int(3) NOT NULL,
+ `Name` varchar(15) NOT NULL,
+ `Floor` varchar(2) NOT NULL,
+ `Ward` varchar(3) NOT NULL,
+ `Hospital_ID` varchar(10) NOT NULL,
+ PRIMARY KEY (`Dept_ID`),
+ KEY `dept_hosp` (`Hospital_ID`),
+ CONSTRAINT `dept_hosp` FOREIGN KEY (`Hospital_ID`) REFERENCES `hospital` (`Hospital_ID`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+-------------------------------------------------------------
 - Table Specific Alterations:-
 
 Department
