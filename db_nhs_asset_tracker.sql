@@ -58,7 +58,22 @@ CREATE TABLE `equipment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
-
+--
+-- Table structure for table `Hospital`
+--
+CREATE TABLE `Hospital` (
+  `Hosp_ID` varchar(10) NOT NULL, -- PK
+  `Hosp_Name` varchar(20) NOT NULL,
+  `Hosp_Address` varchar(35) NOT NULL,
+  `Hosp_Town` varchar(15) NULL, -- Not essential as County is more relevant for tracking
+  `Hosp_County` varchar(30) NOT NULL,
+  `Hosp_Floor` varchar(2) NOT NULL, -- For Joins
+  `Hosp_Ward` varchar(3) NOT NULL,
+  PRIMARY KEY (`Hosp_ID`),
+  KEY `Dept_Hosp` (Hosp_ID),
+  CONSTRAINT `dept_hosp` FOREIGN KEY (`Hosp_ID) REFERENCES `Department` (`Dept_ID) ON UPDATE CASCADE -- For Joins  
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- --------------------------------------------------------
 --
 -- Table structure for table `ids`
 --
