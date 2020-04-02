@@ -1,0 +1,55 @@
+-- Data Format Example --
+-- I haven't specified any examples for null values as these aren't required as default
+-- Any values that are FK only appear in the parent table example
+
+-- Department --
+`Dept_ID` int(3) NOT NULL,`Dept_Name` varchar(15) NOT NULL,
+E.G: `101`, `Darwin`, 
+
+-- Equipment --
+`Equi_ID` varchar(15) NOT NULL,`Equi_Barcode` varchar(12) NOT NULL,`Equi_Name` varchar(20) NOT NULL, `Equi_Category` varchar(25) NOT NULL,
+`Equi_Latittude` decimal(10,7) NOT NULL, `Equi_Longitude` decimal(10,7) NOT NULL,
+`Equi_Timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+
+E.G: `WS4DP`, `123456789097`, `Walking Stick`, `Mobility Aid`,
+     52.596190, -2.093960,
+     2020-04-02 11:30:01,
+
+-- Hospital --
+`Hosp_ID` varchar(10) NOT NULL, `Hosp_Name` varchar(20) NOT NULL, `Hosp_Address` varchar(35) NOT NULL, `Hosp_Town` varchar(15) DEFAULT NULL,
+`Hosp_County` varchar(30) NOT NULL, `Hosp_Floor` varchar(2) NOT NULL, `Hosp_Ward` varchar(3) NOT NULL
+
+E.G: `WLV01NX`, `New Cross`, `Wolverhampton Rd WV10 0QP`, 
+`West Midlands`, `02`, `11B`
+
+-- IDs --
+`IDs_Patient` int(10) NOT NULL, `IDs_Staff` varchar(10) NOT NULL, `IDs_Inpatient` int(10) NOT NULL
+		   
+E.G: `0104870002`, `NHSAW03457`, `2938475748`
+-- Patient ID (Must be Int) Dateofbirth/PatientNumber
+-- NHS/Initials of Staff member/Staff number to create their ID
+
+-- Maintenance --
+`Issue #` varchar(2) NOT NULL, `Details` varchar(60) NOT NULL, `Cleaning_Record` datetime NOT NULL, `Main_Last_Cleaned` datetime DEFAULT NULL
+
+E.G: `10`, `Broken valve`, `2020-04-02`
+
+-- Person --
+`Pers_Surname` varchar(15) NOT NULL, `Pers_Forename` varchar(15) NOT NULL, `Pers_Address` varchar(25) NOT NULL, `Pers_Town` varchar(15) DEFAULT NULL,
+`Pers_County` varchar(30) NOT NULL,
+
+E.G: `Smith`, `Amanda`, `10 Cherry Lane WV11 1JK`,
+`West Midlands`
+
+-- User -- Nothing at the moment see below
+`Username` varchar(15) NOT NULL, `User_Pass` varchar(20) NOT NULL
+-- These should only be granted once the user is verified by Staff ID
+-- Need to research how to store encrypted Passwords
+
+
+
+
+
+
+
+
