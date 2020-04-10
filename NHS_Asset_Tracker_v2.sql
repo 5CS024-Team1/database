@@ -80,9 +80,9 @@ CREATE TABLE `hospital` (
 --
 
 CREATE TABLE `ids` (
-  `IDs_Patient` int(10) NOT NULL,
-  `IDs_Staff` varchar(10) NOT NULL,
-  `IDs_Inpatient` int(10) NOT NULL
+  `IDs_Patient` int(10) NULL,
+  `IDs_Staff` varchar(10) NULL,
+  `IDs_Inpatient` int(10) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
